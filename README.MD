@@ -1,1 +1,1 @@
-Rock Paper Scissors - console
+Rock Paper Scissors with UI
