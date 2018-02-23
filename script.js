@@ -1,12 +1,31 @@
 let playerScore = 0;
 let computerScore = 0;
+const buttons = document.querySelectorAll('button');
+const container = document.querySelector('#container');
+const score = document.querySelector('#score');
+const winner = document.querySelector('#winner');
 
-function transformPlayerString(str) {
-    let newStr = str.toLowerCase();
-    
-    return newStr[0].toUpperCase() + newStr.slice(1);
-}
-    
+buttons.forEach(button => {
+    button.addEventListener('click', e => {
+          if (button.id === 'rock') {
+              container.textContent = playRound(`Rock`);
+              score.textContent = `Player score: ${playerScore}, Computer score: ${computerScore}`;
+              winner.textContent = '';
+              winnerCheck();
+          } else if (button.id === 'paper') {
+              container.textContent = playRound(`Paper`);
+              score.textContent = `Player score: ${playerScore}, Computer score: ${computerScore}`;
+              winner.textContent = '';
+              winnerCheck();
+          } else if (button.id === 'scissors') {
+              container.textContent = playRound(`Scissors`);
+              score.textContent = `Player score: ${playerScore}, Computer score: ${computerScore}`;
+              winner.textContent = '';
+              winnerCheck();
+          }
+        })
+    });
+
 function computerPlay() {
     let random = Math.floor(Math.random() * 3) + 1;
     
@@ -21,7 +40,7 @@ function resetScore() {
 
 function playRound(playerSelection) {
     let computerSelection = computerPlay();
-    playerSelection = transformPlayerString(playerSelection);
+    //playerSelection = transformPlayerString(playerSelection);
     
     
     if (playerSelection == `Rock` && computerSelection == `Paper`) {
@@ -50,19 +69,34 @@ function playRound(playerSelection) {
 
 function winnerCheck() {
     if (playerScore == 5) {
-        console.log(`The player is the winner!`);
+        winner.textContent = `You win!`;
         resetScore();
     } else if (computerScore == 5) {
-        console.log(`The computer is the winner!`);
+        winner.textContent = `Computer wins!`;
         resetScore();
     }
 }
 
+/*
 function game() {
-    let playerChoice = prompt(`Rock, Paper or Scissors?`);
+    //let playerChoice = prompt(`Rock, Paper or Scissors?`);
     console.log(playRound(playerChoice));
     console.log(`Player score: ${playerScore}, Computer score: ${computerScore}`);
-    winnerCheck();
+    //winnerCheck();
 }
 
 
+let rock = document.querySelector('#rock');
+rock.addEventListener('click', function(){
+    console.log(playRound(`Rock`));
+});
+
+let paper = document.querySelector('#paper');
+paper.addEventListener('click', function(){
+    console.log(playRound(`Paper`));
+});
+let scissors = document.querySelector('#scissors');
+scissors.addEventListener('click', function(){
+    console.log(playRound(`Scissors`));
+});
+*/

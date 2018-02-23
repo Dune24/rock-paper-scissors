@@ -1,0 +1,11 @@
+#container,
+#score,
+#winner,
+h1 {
+    text-align: center;
+    margin-bottom: 1%;
+}
+#buttons {
+    padding: 30px;
+    text-align: center;
+}
